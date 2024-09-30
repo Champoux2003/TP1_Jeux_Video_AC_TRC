@@ -1,16 +1,20 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Alien : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private NavMeshAgent navAgent;
+
+    private void Awake()
     {
-        
+        navAgent = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.transform.CompareTag("Player"))
+        {
+            
+        }
     }
 }
