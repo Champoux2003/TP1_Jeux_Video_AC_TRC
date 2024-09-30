@@ -14,7 +14,7 @@ public class Alien : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player"))
         {
-            
+            //fdhfhgdfgdgfdgfdgfd
         }
     }
 }
