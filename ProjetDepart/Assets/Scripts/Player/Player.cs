@@ -32,35 +32,25 @@ public class Player : MonoBehaviour
         forward.y = 0;
         right.y = 0;
 
+        Vector3 move = Vector3.zero;
+        move.y += controller.velocity.y;
+
+
         //Apply gravity
         if (!controller.isGrounded)
         {
-           controller.Move(Physics.gravity * Time.deltaTime);
+            move += Physics.gravity;
         }
-
-        // Calculate movement direction.
+        //Calculate jump
+        else if (jumpAction.action.IsPressed())
+        {
+            move.y = jumpForce;
+        }
         var moveInput = moveAction.action.ReadValue<Vector2>();
-        if (moveInput == Vector2.zero)
-        {
-            controller.Move(Vector3.zero);
-        }
-        else
-        {
-            var moveDirection = forward * moveInput.y + right * moveInput.x;
-            var lookRotation = Quaternion.LookRotation(moveDirection);
-            // Apply movement.
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);  
-            controller.Move(forward * moveInput.y * (speed * Time.deltaTime));
-            
-
-        }
-
-        if (jumpAction.action.IsPressed())
-        {
-           controller.Move(Vector3.up * jumpForce * Time.deltaTime);
-        }
-
-
+        var moveDirection = forward * moveInput.y + right * moveInput.x;
+        var lookRotation = Quaternion.LookRotation(moveDirection);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
+        move += moveDirection * speed;
+        controller.Move(move * Time.deltaTime);
     }
-
 }
