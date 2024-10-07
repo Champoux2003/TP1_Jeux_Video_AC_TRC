@@ -3,10 +3,11 @@ using UnityEngine.Events;
 
 public class EventChannels : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private UnityEvent onBulletHitAlien = new();
     [SerializeField] private UnityEvent onHealthPowerUp = new();
     [SerializeField] private UnityEvent onMissilePowerUp = new();
+    [SerializeField] private UnityEvent onAlienHitPlayer = new();
+
 
     public event UnityAction OnBulletHitAlien
     {
@@ -26,6 +27,16 @@ public class EventChannels : MonoBehaviour
         remove => onMissilePowerUp.RemoveListener(value);
     }
 
+    public event UnityAction onAlienHitPlayer
+    {
+        add => onAlienHitPlayer.AddListener(value);
+        remove => onAlienHitPlayer.RemoveListener(value);
+    }
+
+    public void PublishAlienHitPlayer()
+    {
+        onAlienHitPlayer.Invoke();
+    }
     public void PublishBulletHitAlien()
     {
         onBulletHitAlien.Invoke();
