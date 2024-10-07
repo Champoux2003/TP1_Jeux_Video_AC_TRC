@@ -4,6 +4,20 @@ public class Finder : MonoBehaviour
 {
     private static ObjectPool bulletObjectPool;
     private static EventChannels eventChannels;
+    private static StatManager statManager;
+
+
+    public static StatManager StatManager
+    {
+        get
+        {
+            if (statManager == null)
+            {
+                statManager = GameObject.FindWithTag("GameController").GetComponent<StatManager>();
+            }
+            return statManager;
+        }
+    }
 
     public static ObjectPool BulletObjectPool
     {
@@ -28,5 +42,7 @@ public class Finder : MonoBehaviour
             return eventChannels;
         }
     }
+
+    
 
 }

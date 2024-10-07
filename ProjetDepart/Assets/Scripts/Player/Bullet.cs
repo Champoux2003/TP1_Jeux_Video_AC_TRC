@@ -1,18 +1,35 @@
 using UnityEngine;
 
-public class Ball : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField]private float speed = 50f;
     private ObjectPool bulletObjectPool;
 
-   private void Awake()
+    private float timeSinceSpawned = 0;
+
+    
+
+    private void Awake()
     {
         bulletObjectPool = Finder.BulletObjectPool;
     }
 
+    private void OnEnable()
+    {
+        timeSinceSpawned = 0;
+    }
+    private void Update()
+    {
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        timeSinceSpawned += Time.deltaTime;
+        if (timeSinceSpawned > 5)
+        {
+            bulletObjectPool.Release(gameObject);
+        }
+    }
     private void OnCollisionEnter(Collision other)
     {
-        
+        bulletObjectPool.Release(gameObject);
         Finder.EventChannels.PublishBulletHitAlien();
     }
 

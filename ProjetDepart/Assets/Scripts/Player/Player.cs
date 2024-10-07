@@ -10,8 +10,16 @@ public class Player : MonoBehaviour
 
     [Header("Inputs")]
     [SerializeField] private InputActionReference moveAction;
-    [SerializeField] private InputActionReference jumpAction;   
+    [SerializeField] private InputActionReference jumpAction;
 
+
+    [Header("Health & Invincibility")]
+    [SerializeField] private float health = 100f;
+    [SerializeField] private float invincibilityDuration = 0.5f;
+
+    private bool isJumping = false;
+    private bool isInvincible = false;
+    private float invincibilityTimer = 0f;
     private CharacterController controller;
     private Transform cameraTransform;
 
@@ -45,6 +53,7 @@ public class Player : MonoBehaviour
         else if (jumpAction.action.IsPressed())
         {
             move.y = jumpForce;
+            isJumping = true;
         }
         var moveInput = moveAction.action.ReadValue<Vector2>();
         var moveDirection = forward * moveInput.y + right * moveInput.x;
@@ -52,5 +61,15 @@ public class Player : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
         move += moveDirection * speed;
         controller.Move(move * Time.deltaTime);
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<Alien>() && !isInvincible)
+        {
+            health -= 10;
+            Debug.Log("Player health: " + health);
+            isInvincible = true;
+        }
     }
 }
