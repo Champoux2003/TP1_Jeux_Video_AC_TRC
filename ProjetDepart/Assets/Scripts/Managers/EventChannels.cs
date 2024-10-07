@@ -7,7 +7,14 @@ public class EventChannels : MonoBehaviour
     [SerializeField] private UnityEvent onHealthPowerUp = new();
     [SerializeField] private UnityEvent onMissilePowerUp = new();
     [SerializeField] private UnityEvent onAlienHitPlayer = new();
+    [SerializeField] private UnityEvent onPlayerHitAlien = new();
 
+
+    public event UnityAction OnPlayerHitAlien
+    {
+        add => onPlayerHitAlien.AddListener(value);
+        remove => onPlayerHitAlien.RemoveListener(value);
+    }
 
     public event UnityAction OnBulletHitAlien
     {
@@ -31,6 +38,11 @@ public class EventChannels : MonoBehaviour
     {
         add => onAlienHitPlayer.AddListener(value);
         remove => onAlienHitPlayer.RemoveListener(value);
+    }
+
+    public void PublishPlayerHitAlien()
+    {
+        onPlayerHitAlien.Invoke();
     }
 
     public void PublishAlienHitPlayer()
