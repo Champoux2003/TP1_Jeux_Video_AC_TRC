@@ -3,6 +3,7 @@ using UnityEngine;
 public class Finder : MonoBehaviour
 {
     private static ObjectPool bulletObjectPool;
+    private static ObjectPool missileObjectPool;
     private static ObjectPool alienObjectPool;
     private static EventChannels eventChannels;
     private static StatManager statManager;
@@ -41,6 +42,18 @@ public class Finder : MonoBehaviour
                 alienObjectPool = GameObject.Find("AlienPool").GetComponent<ObjectPool>();
             }
             return alienObjectPool;
+        }
+    }
+
+    public static ObjectPool MissileObjectPool
+    {
+        get
+        {
+            if (missileObjectPool == null)
+            {
+                missileObjectPool = GameObject.Find("MissileObjectPool").GetComponent<ObjectPool>();
+            }
+            return missileObjectPool;
         }
     }
 

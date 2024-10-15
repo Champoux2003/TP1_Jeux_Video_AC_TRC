@@ -3,7 +3,7 @@ using UnityEngine;
 public class StatManager : MonoBehaviour
 {
     [Header("Health")]
-    [SerializeField] private int health = 0;
+    [SerializeField] private int health = 5;
 
     [Header("Missile")]
     [SerializeField] private int missile = 0;
@@ -16,11 +16,16 @@ public class StatManager : MonoBehaviour
     public void Awake()
     {
         var eventChannels = Finder.EventChannels;
+        eventChannels.OnAlienHitPlayer += LoseHealth;
 
     }
 
-    private void manageHealth()
+    private void LoseHealth()
     {
+        if(health > 0)
+        {
+            health -= 1;
+        }
 
     }
 

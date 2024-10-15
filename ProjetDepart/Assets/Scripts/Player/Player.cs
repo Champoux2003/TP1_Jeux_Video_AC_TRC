@@ -14,12 +14,11 @@ public class Player : MonoBehaviour
 
 
     [Header("Health & Invincibility")]
-    [SerializeField] private float health = 100f;
-    [SerializeField] private float invincibilityDuration = 0.5f;
+    //[SerializeField] private float health = 100f;
+    //[SerializeField] private float invincibilityDuration = 0.5f;
 
-    private bool isJumping = false;
     private bool isInvincible = false;
-    private float invincibilityTimer = 0f;
+    //private float invincibilityTimer = 0f;
     private CharacterController controller;
     private Transform cameraTransform;
 
@@ -53,7 +52,6 @@ public class Player : MonoBehaviour
         else if (jumpAction.action.IsPressed())
         {
             move.y = jumpForce;
-            isJumping = true;
         }
         var moveInput = moveAction.action.ReadValue<Vector2>();
         var moveDirection = forward * moveInput.y + right * moveInput.x;
@@ -65,11 +63,21 @@ public class Player : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<Alien>() && !isInvincible)
+        Alien alien = collision.gameObject.GetComponent<Alien>();
+
+        if(alien != null && !isInvincible)
         {
-            health -= 10;
-            Debug.Log("Player health: " + health);
-            isInvincible = true;
+            if(transform.position.y > alien.transform.position.y)
+            {
+                Finder.EventChannels.PublishPlayerHitAlien();
+                Debug.Log("Player hit alien");
+            }
+            else
+            {
+                Finder.EventChannels.PublishAlienHitPlayer();
+                Debug.Log("Alien hit player");
+                isInvincible = true;
+            }
         }
     }
 }
