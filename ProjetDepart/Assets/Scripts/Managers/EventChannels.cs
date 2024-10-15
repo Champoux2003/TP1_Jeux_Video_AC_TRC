@@ -34,7 +34,7 @@ public class EventChannels : MonoBehaviour
         remove => onMissilePowerUp.RemoveListener(value);
     }
 
-    public event UnityAction onAlienHitPlayer
+    public event UnityAction OnAlienHitPlayer
     {
         add => onAlienHitPlayer.AddListener(value);
         remove => onAlienHitPlayer.RemoveListener(value);
