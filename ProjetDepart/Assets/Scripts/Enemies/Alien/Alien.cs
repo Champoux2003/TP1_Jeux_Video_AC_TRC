@@ -31,7 +31,6 @@ public class Alien : MonoBehaviour
         if (collision.transform.GetComponent<Bullet>() is not null)
         {
             alienPool.Release(gameObject);
-
             return;
         }
     }
