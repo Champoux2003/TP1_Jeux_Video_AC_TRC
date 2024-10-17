@@ -22,9 +22,18 @@ public class StatManager : MonoBehaviour
 
     private void LoseHealth()
     {
-        if(health > 0)
+        if (health > 0)
         {
             health -= 1;
+            
+        }
+        if(health > 0)
+        {
+            Finder.EventChannels.PublishPlayerHurt();
+        }
+        else
+        {
+            Finder.EventChannels.PublishPlayerDead();
         }
 
     }
