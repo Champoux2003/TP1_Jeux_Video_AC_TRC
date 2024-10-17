@@ -8,10 +8,6 @@ public class AlienSpawner : MonoBehaviour
     [SerializeField, Tooltip("In seconds."), Min(0)] private float delay = 2f;
     [SerializeField] private Transform[] portals;
 
-    [Header("Limits")]
-    [SerializeField] private Transform start;
-    [SerializeField] private Transform end;
-
     private Awaitable routine;
 
     private void OnEnable()

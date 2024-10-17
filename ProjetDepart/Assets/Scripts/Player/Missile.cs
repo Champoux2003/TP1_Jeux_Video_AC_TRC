@@ -20,7 +20,7 @@ public class Missile : MonoBehaviour
         missileObjectPool = Finder.MissileObjectPool;
     }   
 
-    private void onEnable()
+    private void OnEnable()
     {
         timeSinceSpawned = 0;
     }

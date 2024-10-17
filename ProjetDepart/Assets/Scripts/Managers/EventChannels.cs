@@ -8,6 +8,8 @@ public class EventChannels : MonoBehaviour
     [SerializeField] private UnityEvent onMissilePowerUp = new();
     [SerializeField] private UnityEvent onAlienHitPlayer = new();
     [SerializeField] private UnityEvent onPlayerHitAlien = new();
+    [SerializeField] private UnityEvent onMissileFired = new();
+    [SerializeField] private UnityEvent noMoreMissiles = new();
 
 
     public event UnityAction OnPlayerHitAlien
@@ -32,6 +34,18 @@ public class EventChannels : MonoBehaviour
     {
         add => onMissilePowerUp.AddListener(value);
         remove => onMissilePowerUp.RemoveListener(value);
+    }
+
+    public event UnityAction OnMissileFired
+    {
+        add => onMissileFired.AddListener(value);
+        remove => onMissileFired.RemoveListener(value);
+    }
+
+    public event UnityAction NoMoreMissiles
+    {
+        add => noMoreMissiles.AddListener(value);
+        remove => noMoreMissiles.RemoveListener(value);
     }
 
     public event UnityAction OnAlienHitPlayer
@@ -62,5 +76,15 @@ public class EventChannels : MonoBehaviour
     public void PublishMissilePowerUp()
     {
         onMissilePowerUp.Invoke();
+    }
+
+    public void PublishOnMissileFired()
+    {
+        onMissileFired.Invoke();
+    }
+
+    public void PublishNoMoreMissiles()
+    {
+        noMoreMissiles.Invoke();
     }
 }

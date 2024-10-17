@@ -11,6 +11,12 @@ public class BulletSpawner : MonoBehaviour
 
     private bool canFireMissile = false;
 
+    private void Awake()
+    {
+        var eventChannels = Finder.EventChannels;
+        eventChannels.NoMoreMissiles += DisableMissiles;
+    }
+
     private void OnEnable()
     {
         Finder.EventChannels.OnMissilePowerUp += EnableMissile;
@@ -68,6 +74,11 @@ public class BulletSpawner : MonoBehaviour
     private void EnableMissile()
     {
         canFireMissile = true;
+    }
+
+    private void DisableMissiles()
+    {
+        canFireMissile = false;
     }
 
 }

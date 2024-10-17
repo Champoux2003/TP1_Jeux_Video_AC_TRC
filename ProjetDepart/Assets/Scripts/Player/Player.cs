@@ -79,5 +79,10 @@ public class Player : MonoBehaviour
                 isInvincible = true;
             }
         }
+
+        if (collision.gameobject.GetComponent<Pi>() is not null)
+        {
+
+        }
     }
 }
