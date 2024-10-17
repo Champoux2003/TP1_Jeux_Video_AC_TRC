@@ -6,6 +6,7 @@ public class AlienSpawner : MonoBehaviour
     [Header("Spawning")]
     [SerializeField] private ObjectPool alienPool;
     [SerializeField, Tooltip("In seconds."), Min(0)] private float delay = 2f;
+    [SerializeField] private Transform[] portals;
 
     [Header("Limits")]
     [SerializeField] private Transform start;
@@ -30,10 +31,8 @@ public class AlienSpawner : MonoBehaviour
             var alien = alienPool.Get();
             if (alien != null)
             {
-                var start = this.start.position;
-                var end = this.end.position;
-                var position = Vector3.Lerp(start, end, Random.value);
-
+                var index = Random.Range(0, portals.Length);
+                var position = portals[index].position;
                 alien.transform.position = position;
             }
 
