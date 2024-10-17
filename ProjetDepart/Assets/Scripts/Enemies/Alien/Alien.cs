@@ -13,7 +13,7 @@ public class Alien : MonoBehaviour
     {
         navAgent = GetComponent<NavMeshAgent>();
         alienPool = Finder.AlienObjectPool;
-        target = GameObject.FindWithTag("Player");
+        target = GetComponent<Player>();
     }
 
     private void Update()
@@ -23,7 +23,7 @@ public class Alien : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Player"))
+        if (collision.transform.GetComponent<Player>() is not null)
         {
             alienPool.Release(gameObject);
             return;

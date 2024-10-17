@@ -78,11 +78,6 @@ public class Player : MonoBehaviour
                 Debug.Log("Alien hit player");
                 isInvincible = true;
             }
-        }
-
-        if (collision.gameobject.GetComponent<Pi>() is not null)
-        {
-
-        }
+        }   
     }
 }
