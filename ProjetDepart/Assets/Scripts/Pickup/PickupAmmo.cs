@@ -7,7 +7,7 @@ public class PickupAmmo : MonoBehaviour
     {
         if (collision.transform.GetComponent<Player>() is not null)
         {
-            Finder.EventChannel.PublishBulletePowerUp();
+            Finder.EventChannels.PublishBulletPowerUp();
         }
     }
 }
