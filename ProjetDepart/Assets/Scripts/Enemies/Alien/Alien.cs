@@ -13,7 +13,7 @@ public class Alien : MonoBehaviour
     {
         navAgent = GetComponent<NavMeshAgent>();
         alienPool = Finder.AlienObjectPool;
-        target = GetComponent<Player>();
+        target = GameObject.FindWithTag("Player");
     }
 
     private void Update()

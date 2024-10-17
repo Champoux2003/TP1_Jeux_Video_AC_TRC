@@ -135,7 +135,7 @@ public class EventChannels : MonoBehaviour
         onFireMissile.Invoke();
     }
 
-    public void PublishBulletePowerUp()
+    public void PublishBulletPowerUp()
     {
         onBulletPowerUp.Invoke();
     }
