@@ -9,9 +9,26 @@ public class EventChannels : MonoBehaviour
     [SerializeField] private UnityEvent onBulletPowerUp = new();
     [SerializeField] private UnityEvent onAlienHitPlayer = new();
     [SerializeField] private UnityEvent onPlayerHitAlien = new();
+    [SerializeField] private UnityEvent onPlayerHurt = new();
+    [SerializeField] private UnityEvent onPlayerDead = new();
+    [SerializeField] private UnityEvent onFireBullet = new();
+    [SerializeField] private UnityEvent onFireMissile = new();
+
     [SerializeField] private UnityEvent onMissileFired = new();
     [SerializeField] private UnityEvent noMoreMissiles = new();
 
+
+    public event UnityAction OnFireMissile
+    {
+        add => onFireMissile.AddListener(value);
+        remove => onFireMissile.RemoveListener(value);
+    }
+
+    public event UnityAction OnFireBullet
+    {
+        add => onFireBullet.AddListener(value);
+        remove => onFireBullet.RemoveListener(value);
+    }
 
     public event UnityAction OnPlayerHitAlien
     {
@@ -61,6 +78,18 @@ public class EventChannels : MonoBehaviour
         remove => onAlienHitPlayer.RemoveListener(value);
     }
 
+    public event UnityAction OnPlayerHurt
+    {
+        add => onPlayerHurt.AddListener(value);
+        remove => onPlayerHurt.RemoveListener(value);
+    }
+
+    public event UnityAction OnPlayerDead
+    {
+        add => onPlayerDead.AddListener(value);
+        remove => onPlayerDead.RemoveListener(value);
+    }
+
     public void PublishPlayerHitAlien()
     {
         onPlayerHitAlien.Invoke();
@@ -70,6 +99,7 @@ public class EventChannels : MonoBehaviour
     {
         onAlienHitPlayer.Invoke();
     }
+
     public void PublishBulletHitAlien()
     {
         onBulletHitAlien.Invoke();
@@ -83,6 +113,26 @@ public class EventChannels : MonoBehaviour
     public void PublishMissilePowerUp()
     {
         onMissilePowerUp.Invoke();
+    }
+
+    public void PublishPlayerHurt()
+    {
+        onPlayerHurt.Invoke();
+    }
+
+    public void PublishPlayerDead()
+    {
+        onPlayerDead.Invoke();
+    }
+
+    public void PublishFireBullet()
+    {
+        onFireBullet.Invoke();
+    }
+
+    public void PublishFireMissile()
+    {
+        onFireMissile.Invoke();
     }
 
     public void PublishBulletePowerUp()
