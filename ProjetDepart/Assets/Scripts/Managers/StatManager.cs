@@ -8,10 +8,18 @@ public class StatManager : MonoBehaviour
     [Header("Missile")]
     [SerializeField] private int missile = 0;
 
+    [Header("Ammo")]
+    [SerializeField] private int ammo = 0;
+
     public int Health => health;
 
     public int Missile => missile;
 
+    public int Ammo => ammo;
+
+    
+    private float powerUpTimer = 0f;
+    [SerializeField] private float powerUpDuration = 10f;
 
     public void Awake()
     {
@@ -20,7 +28,17 @@ public class StatManager : MonoBehaviour
         eventChannels.OnHealthPowerUp += GainHealth;
         eventChannels.OnMissilePowerUp += GainMissiles;
         eventChannels.OnMissileFired += LoseMissile;
+        eventChannels.OnBulletPowerUp += GainFireRate;
 
+    }
+
+    private void Update()
+    {
+        powerUpTimer -= Time.deltaTime;
+        if(powerUpTimer <= 0)
+        {
+            Finder.EventChannels.PublishNoMoreBulletPowerUp();
+        }
     }
 
     private void LoseHealth()
@@ -62,4 +80,11 @@ public class StatManager : MonoBehaviour
             Finder.EventChannels.PublishNoMoreMissiles();
         }
     }
+
+    private void GainFireRate()
+    {
+        powerUpTimer += powerUpDuration;
+    }
+
+
 }

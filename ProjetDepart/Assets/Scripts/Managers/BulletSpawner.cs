@@ -10,7 +10,9 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] private ObjectPool missileObjectPool;
 
     [Header("Fire Settings")]
-    [SerializeField] private float fireRate = 0.05f;
+    [SerializeField] private float basicFireRate = 0.05f;
+    [SerializeField] private float fireRate;
+    [SerializeField] private float upgradedFireRate = 0.025f;
     private float nextFire = 0.0f;
     private bool isFire = false;
 
@@ -20,6 +22,10 @@ public class BulletSpawner : MonoBehaviour
     {
         var eventChannels = Finder.EventChannels;
         eventChannels.NoMoreMissiles += DisableMissiles;
+        eventChannels.OnBulletPowerUp += UpgradeFireRate;
+        eventChannels.NoMoreBulletPowerUp += DowngradeFireRate;
+        fireRate = basicFireRate;
+
     }
 
     private void OnEnable()
@@ -105,6 +111,16 @@ public class BulletSpawner : MonoBehaviour
     private void DisableMissiles()
     {
         canFireMissile = false;
+    }
+
+    private void UpgradeFireRate()
+    {
+        fireRate = upgradedFireRate;
+    }
+
+    private void DowngradeFireRate()
+    { 
+        fireRate = basicFireRate;
     }
 
 }
