@@ -23,6 +23,18 @@ public class EventChannels : MonoBehaviour
     [SerializeField] private UnityEvent onBulletPowerUp = new();
     [SerializeField] private UnityEvent noMoreBulletPowerUp = new();
 
+    [Header("EndGame Events")]
+    [SerializeField] private UnityEvent addAlienCount = new();
+    [SerializeField] private UnityEvent removeAlienCount = new();
+    [SerializeField] private UnityEvent nbPortalDestroy = new();
+    [SerializeField] private UnityEvent onPlayerWin = new();
+
+
+    public event UnityAction OnPlayerWin
+    {
+        add => onPlayerWin.AddListener(value);
+        remove => onPlayerWin.RemoveListener(value);
+    }
 
     public event UnityAction OnFireMissile
     {
@@ -108,6 +120,40 @@ public class EventChannels : MonoBehaviour
         remove => noMoreBulletPowerUp.RemoveListener(value);
     }
 
+    public event UnityAction AddAlienCount
+    {
+        add => addAlienCount.AddListener(value);
+        remove => addAlienCount.RemoveListener(value);
+    }
+
+    public event UnityAction RemoveAlienCount
+    {
+        add => removeAlienCount.AddListener(value);
+        remove => removeAlienCount.RemoveListener(value);
+    }
+
+    public event UnityAction NbPortalDestroy
+    {
+        add => nbPortalDestroy.AddListener(value);
+        remove => nbPortalDestroy.RemoveListener(value);
+    }
+
+
+    public void PublishAddAlienCount()
+    {
+        addAlienCount.Invoke();
+    }
+
+    public void PublishRemoveAlienCount()
+    {
+        removeAlienCount.Invoke();
+    }
+
+    public void PublishNbPortalDestroy()
+    {
+        nbPortalDestroy.Invoke();
+    }
+
     public void PublishPlayerHitAlien()
     {
         onPlayerHitAlien.Invoke();
@@ -177,4 +223,10 @@ public class EventChannels : MonoBehaviour
     {
         noMoreBulletPowerUp.Invoke();
     }
+
+    public void PublishPlayerWin()
+    {
+        onPlayerWin.Invoke();
+    }
+
 }

@@ -87,12 +87,14 @@ public class Player : MonoBehaviour
             if(transform.position.y > collision.transform.position.y || isInvincible)
             {
                 Finder.EventChannels.PublishPlayerHitAlien();
+                
             }
             else
             {
                 StartCoroutine(EnableInvicibility());
                 Finder.EventChannels.PublishAlienHitPlayer();
             }
+            Finder.EventChannels.PublishRemoveAlienCount();
         }
     }
 

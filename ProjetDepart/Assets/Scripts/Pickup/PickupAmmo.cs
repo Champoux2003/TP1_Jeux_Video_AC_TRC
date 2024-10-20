@@ -28,10 +28,8 @@ public class PickupAmmo : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Nig");
         if (other.transform.GetComponent<Player>() is not null)
         {
-            Debug.Log("Nig2");
             pickupBulletObjectPool.Release(gameObject);
             Finder.EventChannels.PublishBulletPowerUp();
             return;

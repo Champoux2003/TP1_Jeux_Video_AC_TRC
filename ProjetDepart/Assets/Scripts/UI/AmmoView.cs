@@ -3,7 +3,7 @@ using TMPro;
 
 public class AmmoView : MonoBehaviour
 {
-    [SerializeField] private string format = "Ammo: {0}";
+    [SerializeField] private string format = "{0}";
     private StatManager statManager;
     private TMP_Text text;
 

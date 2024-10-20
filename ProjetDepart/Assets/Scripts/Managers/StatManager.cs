@@ -2,22 +2,26 @@ using UnityEngine;
 
 public class StatManager : MonoBehaviour
 {
+
     [Header("Health")]
     [SerializeField] private int health = 5;
 
     [Header("Missile")]
     [SerializeField] private int missile = 0;
 
-    [Header("Ammo")]
-    [SerializeField] private int ammo = 0;
-
     public int Health => health;
 
     public int Missile => missile;
 
-    public int Ammo => ammo;
+    public float Ammo => powerUpTimer;
 
-    
+    public string LoseMessage => loseMessage;
+    public string WinMessage => winMessage;
+
+    [SerializeField]private int nbOfPortals = 8;
+    private int nbAliens = 0;
+    private string winMessage = "You Win!";
+    private string loseMessage = "You Lose!";
     private float powerUpTimer = 0f;
     [SerializeField] private float powerUpDuration = 10f;
 
@@ -29,6 +33,9 @@ public class StatManager : MonoBehaviour
         eventChannels.OnMissilePowerUp += GainMissiles;
         eventChannels.OnMissileFired += LoseMissile;
         eventChannels.OnBulletPowerUp += GainFireRate;
+        eventChannels.NbPortalDestroy += BreakPortal;
+        eventChannels.AddAlienCount += SpawnAlien;
+        eventChannels.RemoveAlienCount += KillAlien;
 
     }
 
@@ -37,7 +44,13 @@ public class StatManager : MonoBehaviour
         powerUpTimer -= Time.deltaTime;
         if(powerUpTimer <= 0)
         {
+            powerUpTimer = 0;
             Finder.EventChannels.PublishNoMoreBulletPowerUp();
+        }
+
+        if(nbOfPortals == 0 && nbAliens == 0)
+        {
+            Finder.EventChannels.PublishPlayerWin();
         }
     }
 
@@ -52,7 +65,7 @@ public class StatManager : MonoBehaviour
         {
             Finder.EventChannels.PublishPlayerHurt();
         }
-        else
+        if(health <= 0)
         {
             Finder.EventChannels.PublishPlayerDead();
         }
@@ -86,5 +99,17 @@ public class StatManager : MonoBehaviour
         powerUpTimer += powerUpDuration;
     }
 
+    private void BreakPortal()
+    {
+        nbOfPortals -= 1;
+    }
+    private void SpawnAlien()
+    {
+        nbAliens += 1;
+    }
+    private void KillAlien()
+    { 
+        nbAliens -= 1;
+    }
 
 }

@@ -28,12 +28,13 @@ public class PickupHealth : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Nig");
         if (other.transform.GetComponent<Player>() is not null)
         {
-            Debug.Log("Nig2");
+            Debug.Log("noir sale");
             pickupHealthObjectPool.Release(gameObject);
-            Finder.EventChannels.PublishHealthPowerUp();
+            Finder.EventChannels.PublishHealthPowerUp(); 
+          
+
             return;
         }
     }

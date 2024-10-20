@@ -11,8 +11,8 @@ public class BulletSpawner : MonoBehaviour
 
     [Header("Fire Settings")]
     [SerializeField] private float basicFireRate = 0.1f;
-    [SerializeField] private float fireRate;
     [SerializeField] private float upgradedFireRate = 0.05f;
+    private float fireRate;
     private float nextFire = 0.0f;
     private bool isFire = false;
 
@@ -90,6 +90,7 @@ public class BulletSpawner : MonoBehaviour
             if (missileRigidbody != null)
             {
                 missileRigidbody.linearVelocity = canon.forward;
+                Finder.EventChannels.PublishOnMissileFired();
             }
         }
     }

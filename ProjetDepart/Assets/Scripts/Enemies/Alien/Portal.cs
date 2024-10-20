@@ -13,6 +13,7 @@ public class Portal : MonoBehaviour
         if(health <= 0)
         {
             gameObject.SetActive(false);
+            Finder.EventChannels.PublishNbPortalDestroy();
         }
     }
 }

@@ -786,6 +786,7 @@ GameObject:
   - component: {fileID: -5604875091360363607}
   - component: {fileID: 7314129951618862022}
   - component: {fileID: -4368622383005395221}
+  - component: {fileID: 2923158158815226452}
   m_Layer: 0
   m_Name: PickupAmmo
   m_TagString: Untagged
@@ -882,6 +883,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!111 &2923158158815226452
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7171504067025027473}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: aa3eacdc983d28743ac4bbae2d9b0516, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: aa3eacdc983d28743ac4bbae2d9b0516, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
 --- !u!1 &7262976537300094628
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,6 +18,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip powerUpSpawnSound;
     [SerializeField] private AudioClip powerUpCollectSound;
 
+    [Header("Winning Audio")]
+    [SerializeField] private AudioClip winningSound;
+
     private AudioSource audioSource;
 
     private void Awake()
@@ -34,6 +37,7 @@ public class SoundManager : MonoBehaviour
         EventChannels.OnHealthPowerUp += PlayPowerUpCollectSound;
         EventChannels.OnMissilePowerUp += PlayPowerUpCollectSound;
         EventChannels.OnBulletPowerUp += PlayPowerUpCollectSound;
+        EventChannels.OnPlayerWin += PlayWinningSound;
     }
 
     private void PlayHurtSound()
@@ -68,6 +72,11 @@ public class SoundManager : MonoBehaviour
 
     private void PlayPowerUpCollectSound() {
         audioSource.PlayOneShot(powerUpCollectSound);
+    }
+
+    private void PlayWinningSound()
+    {
+        audioSource.PlayOneShot(winningSound);
     }
 
 }

@@ -443,6 +443,7 @@ GameObject:
   - component: {fileID: 8280029664456899440}
   - component: {fileID: 5400467157756457188}
   - component: {fileID: 6472228503868182256}
+  - component: {fileID: 1648455172570007450}
   m_Layer: 0
   m_Name: PickupHealth
   m_TagString: Untagged
@@ -539,8 +540,25 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!111 &1648455172570007450
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6319660280540615819}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: aa3eacdc983d28743ac4bbae2d9b0516, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: aa3eacdc983d28743ac4bbae2d9b0516, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0

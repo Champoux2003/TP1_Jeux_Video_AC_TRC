@@ -37,6 +37,15 @@ public class Alien : MonoBehaviour
             alienPool.Release(gameObject);
             handleDeath();
             Finder.EventChannels.PublishBulletHitAlien();
+            Finder.EventChannels.PublishRemoveAlienCount();
+            return;
+        }
+        if (collision.transform.GetComponent<Missile>() is not null)
+        {
+            alienPool.Release(gameObject);
+            handleDeath();
+            Finder.EventChannels.PublishBulletHitAlien();
+            Finder.EventChannels.PublishRemoveAlienCount();
             return;
         }
     }

@@ -28,10 +28,8 @@ public class PickupArmor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Nig");
         if (other.transform.GetComponent<Player>() is not null)
         {
-            Debug.Log("Nig2");
             pickupArmorObjectPool.Release(gameObject);
             Finder.EventChannels.PublishMissilePowerUp();
             return;

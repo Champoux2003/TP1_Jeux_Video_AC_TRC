@@ -3,7 +3,7 @@ using TMPro;
 
 public class HealthView : MonoBehaviour
 {
-    [SerializeField] private string format = "Health: {0}";
+    [SerializeField] private string format = "{0}";
     private StatManager statManager;
     private TMP_Text text;
 

@@ -30,6 +30,7 @@ public class AlienSpawner : MonoBehaviour
                 var index = Random.Range(0, portals.Length);
                 var position = portals[index].position;
                 alien.transform.position = position;
+                Finder.EventChannels.PublishAddAlienCount();
             }
 
             await Awaitable.WaitForSecondsAsync(delay);
