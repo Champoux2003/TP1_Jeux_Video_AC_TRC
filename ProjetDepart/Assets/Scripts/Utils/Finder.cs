@@ -10,6 +10,7 @@ public class Finder : MonoBehaviour
     private static ObjectPool pickupBulletObjectPool;
     private static EventChannels eventChannels;
     private static StatManager statManager;
+    private static PickupSpawner pickupSpawner;
 
 
     public static StatManager StatManager
@@ -21,6 +22,18 @@ public class Finder : MonoBehaviour
                 statManager = GameObject.FindWithTag("GameController").GetComponent<StatManager>();
             }
             return statManager;
+        }
+    }
+
+    public static PickupSpawner PickupSpawner
+    {
+        get
+        {
+            if (pickupSpawner == null)
+            {
+                pickupSpawner = GameObject.Find("PickupSpawner").GetComponent<PickupSpawner>();
+            }
+            return pickupSpawner;
         }
     }
 

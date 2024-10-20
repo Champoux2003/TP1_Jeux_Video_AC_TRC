@@ -7,12 +7,15 @@ public class Alien : MonoBehaviour
 
     private ObjectPool alienPool;
 
+    private PickupSpawner pickupSpawner;
+
     private GameObject target;
 
     private void Awake()
     {
         navAgent = GetComponent<NavMeshAgent>();
         alienPool = Finder.AlienObjectPool;
+        pickupSpawner = Finder.PickupSpawner;
         target = GameObject.FindWithTag("Player");
     }
 
@@ -26,13 +29,25 @@ public class Alien : MonoBehaviour
         if (collision.transform.GetComponent<Player>() is not null)
         {
             alienPool.Release(gameObject);
+            handleDeath();
             return;
         }
         if (collision.transform.GetComponent<Bullet>() is not null)
         {
             alienPool.Release(gameObject);
+            handleDeath();
             Finder.EventChannels.PublishBulletHitAlien();
             return;
+        }
+    }
+
+    private void handleDeath()
+    {
+        var pickup = pickupSpawner.SpawnPickup();
+
+        if (pickup != null)
+        {
+            pickup.transform.position = gameObject.transform.position;
         }
     }
 }
