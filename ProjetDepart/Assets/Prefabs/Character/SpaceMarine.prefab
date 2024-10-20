@@ -1865,7 +1865,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5014231859395389256}
-  - component: {fileID: 4966570542020287210}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -1891,28 +1890,6 @@ Transform:
   - {fileID: 7001292397414039615}
   m_Father: {fileID: 2993637415589400559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &4966570542020287210
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2730367996260668252}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 9075b8c6238b8074ab40c1e7bb86fd4a, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2924972335389280424
 GameObject:
   m_ObjectHideFlags: 0
@@ -2721,9 +2698,10 @@ GameObject:
   - component: {fileID: 2993637415589400559}
   - component: {fileID: 6197373355894401182}
   - component: {fileID: 2250354954401681623}
+  - component: {fileID: 426718908131490316}
   m_Layer: 0
   m_Name: SpaceMarine
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2759,11 +2737,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 50
   jumpForce: 200
+  gravity: 30
   rotationSpeed: 30
   moveAction: {fileID: -1680190386980627800, guid: 04cc15706f63de54b99fedd88a3cbe71,
     type: 3}
   jumpAction: {fileID: 747588364371475301, guid: 04cc15706f63de54b99fedd88a3cbe71,
     type: 3}
+  invincibilityDuration: 0.5
 --- !u!143 &2250354954401681623
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2784,11 +2764,28 @@ CharacterController:
   serializedVersion: 3
   m_Height: 12
   m_Radius: 3
-  m_SlopeLimit: 45
+  m_SlopeLimit: 90
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 5.73, z: 0}
+--- !u!111 &426718908131490316
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4028184238259564378}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: cc49cfefc1575434bb9e932a4cef6266, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: cc49cfefc1575434bb9e932a4cef6266, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
 --- !u!1 &4066747190188261679
 GameObject:
   m_ObjectHideFlags: 0
@@ -4042,6 +4039,7 @@ MonoBehaviour:
     type: 3}
   bulletObjectPool: {fileID: 0}
   missileObjectPool: {fileID: 0}
+  fireRate: 0.05
 --- !u!1 &7299577311642027721
 GameObject:
   m_ObjectHideFlags: 0

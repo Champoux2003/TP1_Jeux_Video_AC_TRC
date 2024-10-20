@@ -14,6 +14,10 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip bulletShotSound;
     [SerializeField] private AudioClip missileShotSound;
 
+    [Header("Power Up Audio")]
+    [SerializeField] private AudioClip powerUpSpawnSound;
+    [SerializeField] private AudioClip powerUpCollectSound;
+
     private AudioSource audioSource;
 
     private void Awake()
@@ -26,6 +30,10 @@ public class SoundManager : MonoBehaviour
         EventChannels.OnPlayerHitAlien += PlayAlienDeathSound;
         EventChannels.OnFireBullet += PlayBulletShotSound;
         EventChannels.OnFireMissile += PlayMissileShotSound;
+        EventChannels.OnPowerUpSpawn += PlayPowerUpSpawnSound;
+        EventChannels.OnHealthPowerUp += PlayPowerUpCollectSound;
+        EventChannels.OnMissilePowerUp += PlayPowerUpCollectSound;
+        EventChannels.OnBulletPowerUp += PlayPowerUpCollectSound;
     }
 
     private void PlayHurtSound()
@@ -53,5 +61,13 @@ public class SoundManager : MonoBehaviour
         audioSource.PlayOneShot(missileShotSound);
     }
 
+    private void PlayPowerUpSpawnSound()
+    {
+        audioSource.PlayOneShot(powerUpSpawnSound);
+    }
+
+    private void PlayPowerUpCollectSound() {
+        audioSource.PlayOneShot(powerUpCollectSound);
+    }
 
 }

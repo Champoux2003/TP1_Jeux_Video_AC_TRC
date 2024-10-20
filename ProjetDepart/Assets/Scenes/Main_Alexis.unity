@@ -252,7 +252,7 @@ Transform:
   m_GameObject: {fileID: 282840810}
   serializedVersion: 2
   m_LocalRotation: {x: 0.01347298, y: 0, z: 0, w: 0.9999093}
-  m_LocalPosition: {x: 0, y: -62.44177, z: -38.148678}
+  m_LocalPosition: {x: 0, y: -62.87177, z: -38.148678}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1197,7 +1197,7 @@ Transform:
   m_GameObject: {fileID: 609227521}
   serializedVersion: 2
   m_LocalRotation: {x: 0.01347298, y: 0, z: 0, w: 0.9999093}
-  m_LocalPosition: {x: 0, y: -62.44177, z: -38.148678}
+  m_LocalPosition: {x: 0, y: -62.87177, z: -38.148678}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1867,12 +1867,6 @@ MonoBehaviour:
   onBulletHitAlien:
     m_PersistentCalls:
       m_Calls: []
-  onHealthPowerUp:
-    m_PersistentCalls:
-      m_Calls: []
-  onMissilePowerUp:
-    m_PersistentCalls:
-      m_Calls: []
   onAlienHitPlayer:
     m_PersistentCalls:
       m_Calls: []
@@ -1885,10 +1879,28 @@ MonoBehaviour:
   onPlayerDead:
     m_PersistentCalls:
       m_Calls: []
+  onFireMissile:
+    m_PersistentCalls:
+      m_Calls: []
+  onMissileFired:
+    m_PersistentCalls:
+      m_Calls: []
+  noMoreMissiles:
+    m_PersistentCalls:
+      m_Calls: []
   onFireBullet:
     m_PersistentCalls:
       m_Calls: []
-  onFireMissile:
+  onPowerUpSpawn:
+    m_PersistentCalls:
+      m_Calls: []
+  onHealthPowerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onMissilePowerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onBulletPowerUp:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1233352741
@@ -2121,6 +2133,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390372479}
   m_CullTransparentMesh: 1
+--- !u!1 &1540782554 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4195673843958013120, guid: 2e3cff1bd845bb1448d4ba09f2702388,
+    type: 3}
+  m_PrefabInstance: {fileID: 8861627205836164219}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1540782557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540782554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c22cd5377a2e14d98daa547c7399ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minVolume: 0.1
+  maxVolume: 0.5
+  backgroundMusic:
+  - {fileID: 8300000, guid: c913da143d1341c4a8ca22e0717e79a2, type: 3}
+  - {fileID: 8300000, guid: 390d1e401d456db4e8923d60a357e309, type: 3}
 --- !u!1 &1552783368
 GameObject:
   m_ObjectHideFlags: 0
@@ -2653,8 +2688,6 @@ MonoBehaviour:
   - {fileID: 972968415}
   - {fileID: 1998419653}
   - {fileID: 1103106972}
-  start: {fileID: 0}
-  end: {fileID: 0}
 --- !u!4 &1925213048
 Transform:
   m_ObjectHideFlags: 0
@@ -3563,6 +3596,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 426718908131490316, guid: 77c112c44936f2b428d396183b119695,
+        type: 3}
+      propertyPath: m_Animations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 426718908131490316, guid: 77c112c44936f2b428d396183b119695,
+        type: 3}
+      propertyPath: 'm_Animations.Array.data[1]'
+      value: 
+      objectReference: {fileID: 7400000, guid: cc49cfefc1575434bb9e932a4cef6266, type: 2}
     - target: {fileID: 2250354954401681623, guid: 77c112c44936f2b428d396183b119695,
         type: 3}
       propertyPath: m_SlopeLimit
@@ -3576,7 +3619,7 @@ PrefabInstance:
     - target: {fileID: 2993637415589400559, guid: 77c112c44936f2b428d396183b119695,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -74.47
+      value: -74.9
       objectReference: {fileID: 0}
     - target: {fileID: 2993637415589400559, guid: 77c112c44936f2b428d396183b119695,
         type: 3}
@@ -3628,6 +3671,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4966570542020287210, guid: 77c112c44936f2b428d396183b119695,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966570542020287210, guid: 77c112c44936f2b428d396183b119695,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6197373355894401182, guid: 77c112c44936f2b428d396183b119695,
         type: 3}
       propertyPath: gravity
@@ -3653,7 +3706,8 @@ PrefabInstance:
       propertyPath: missileObjectPool
       value: 
       objectReference: {fileID: 807037030}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6340,6 +6394,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3263061000740738052, guid: 2e3cff1bd845bb1448d4ba09f2702388,
+        type: 3}
+      propertyPath: powerUpSpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 00f25f135ee488c4591479876ca3f10c, type: 3}
+    - target: {fileID: 3263061000740738052, guid: 2e3cff1bd845bb1448d4ba09f2702388,
+        type: 3}
+      propertyPath: powerUpCollectSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 55bc10006917fbe46a89f70a93cd4e1f, type: 3}
     - target: {fileID: 4195673843958013120, guid: 2e3cff1bd845bb1448d4ba09f2702388,
         type: 3}
       propertyPath: m_Name
@@ -6348,7 +6412,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4195673843958013120, guid: 2e3cff1bd845bb1448d4ba09f2702388,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1540782557}
   m_SourcePrefab: {fileID: 100100000, guid: 2e3cff1bd845bb1448d4ba09f2702388, type: 3}
 --- !u!4 &8885901625419448725
 Transform:

@@ -3,19 +3,24 @@ using UnityEngine.Events;
 
 public class EventChannels : MonoBehaviour
 {
+    [Header("Collision Events")]
     [SerializeField] private UnityEvent onBulletHitAlien = new();
-    [SerializeField] private UnityEvent onHealthPowerUp = new();
-    [SerializeField] private UnityEvent onMissilePowerUp = new();
-    [SerializeField] private UnityEvent onBulletPowerUp = new();
     [SerializeField] private UnityEvent onAlienHitPlayer = new();
     [SerializeField] private UnityEvent onPlayerHitAlien = new();
     [SerializeField] private UnityEvent onPlayerHurt = new();
     [SerializeField] private UnityEvent onPlayerDead = new();
-    [SerializeField] private UnityEvent onFireBullet = new();
-    [SerializeField] private UnityEvent onFireMissile = new();
 
+    [Header("Projectile Events")]
+    [SerializeField] private UnityEvent onFireMissile = new();
     [SerializeField] private UnityEvent onMissileFired = new();
     [SerializeField] private UnityEvent noMoreMissiles = new();
+    [SerializeField] private UnityEvent onFireBullet = new();
+
+    [Header("Power Up Events")]
+    [SerializeField] private UnityEvent onPowerUpSpawn = new();
+    [SerializeField] private UnityEvent onHealthPowerUp = new();
+    [SerializeField] private UnityEvent onMissilePowerUp = new();
+    [SerializeField] private UnityEvent onBulletPowerUp = new();
 
 
     public event UnityAction OnFireMissile
@@ -90,6 +95,12 @@ public class EventChannels : MonoBehaviour
         remove => onPlayerDead.RemoveListener(value);
     }
 
+    public event UnityAction OnPowerUpSpawn
+    {
+        add => onPowerUpSpawn.AddListener(value);
+        remove => onPowerUpSpawn.RemoveListener(value);
+    }
+
     public void PublishPlayerHitAlien()
     {
         onPlayerHitAlien.Invoke();
@@ -135,7 +146,7 @@ public class EventChannels : MonoBehaviour
         onFireMissile.Invoke();
     }
 
-    public void PublishBulletePowerUp()
+    public void PublishBulletPowerUp()
     {
         onBulletPowerUp.Invoke();
     }
@@ -148,5 +159,10 @@ public class EventChannels : MonoBehaviour
     public void PublishNoMoreMissiles()
     {
         noMoreMissiles.Invoke();
+    }
+
+    public void PublishPowerUpSpawn()
+    {
+        onPowerUpSpawn.Invoke();
     }
 }

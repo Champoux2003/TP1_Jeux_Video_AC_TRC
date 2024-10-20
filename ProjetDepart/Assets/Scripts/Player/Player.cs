@@ -90,7 +90,6 @@ public class Player : MonoBehaviour
             }
             else
             {
-                Finder.EventChannels.PublishAlienHitPlayer();
                 StartCoroutine(EnableInvicibility());
             }
         }   
