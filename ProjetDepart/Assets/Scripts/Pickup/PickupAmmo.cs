@@ -31,7 +31,6 @@ public class PickupAmmo : MonoBehaviour
         Debug.Log("Nig");
         if (other.transform.GetComponent<Player>() is not null)
         {
-            Finder.EventChannels.PublishBulletPowerUp();
             Debug.Log("Nig2");
             pickupBulletObjectPool.Release(gameObject);
             Finder.EventChannels.PublishBulletPowerUp();
