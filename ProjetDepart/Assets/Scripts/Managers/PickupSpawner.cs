@@ -5,13 +5,6 @@ public class PickupSpawner : MonoBehaviour
     [Header("Spawning")]
     [SerializeField] private ObjectPool[] pickupPools;
     [SerializeField] private int spawningOdds = 20;
-    /*private void OnEnable()
-    {
-        var eventChannels = Finder.EventChannels;
-        eventChannels.OnAlienHitPlayer += SpawnPickup;
-        eventChannels.OnPlayerHitAlien += SpawnPickup;
-        eventChannels.OnBulletHitAlien += SpawnPickup;
-    }*/
 
     public GameObject SpawnPickup()
     {
