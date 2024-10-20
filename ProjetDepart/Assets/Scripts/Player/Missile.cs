@@ -37,12 +37,13 @@ public class Missile : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        
         Explode();
     }
 
     private void Explode()
     {
-        if(explosionPrefab != null)
+        if(explosionPrefab is not null)
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         }
@@ -59,7 +60,7 @@ public class Missile : MonoBehaviour
                 {
                     hit.rigidbody.AddExplosionForce(explosionForce, transform.position, explosionRadius);
                 }
-                Finder.EventChannels.PublishBulletHitAlien();//Peut etre changer pour missile
+                Finder.EventChannels.PublishBulletHitAlien();
             }
         }
         missileObjectPool.Release(gameObject);

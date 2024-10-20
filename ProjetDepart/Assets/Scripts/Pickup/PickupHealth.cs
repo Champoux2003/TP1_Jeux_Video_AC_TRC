@@ -30,7 +30,6 @@ public class PickupHealth : MonoBehaviour
     {
         if (other.transform.GetComponent<Player>() is not null)
         {
-            Debug.Log("noir sale");
             pickupHealthObjectPool.Release(gameObject);
             Finder.EventChannels.PublishHealthPowerUp(); 
           
