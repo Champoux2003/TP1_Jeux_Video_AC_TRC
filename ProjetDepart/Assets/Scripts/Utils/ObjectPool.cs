@@ -5,7 +5,6 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] private GameObject prefab;
     [SerializeField, Min(1)] private int objectCount = 10;
 
-
     private void Awake()
     {
         for (var i = 0; i < objectCount; i++)
@@ -33,6 +32,5 @@ public class ObjectPool : MonoBehaviour
     {
         instance.SetActive(false);
         instance.transform.parent = transform;
-
     }
 }

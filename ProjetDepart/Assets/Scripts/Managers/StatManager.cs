@@ -19,11 +19,12 @@ public class StatManager : MonoBehaviour
     public string WinMessage => winMessage;
 
     [SerializeField]private int nbOfPortals = 8;
-    private int nbAliens = 0;
-    private string winMessage = "You Win!";
-    private string loseMessage = "You Lose!";
-    private float powerUpTimer = 0f;
     [SerializeField] private float powerUpDuration = 10f;
+    [SerializeField]private string winMessage = "You Win!";
+    [SerializeField] private string loseMessage = "You Lose!";
+    private float powerUpTimer = 0f;
+    private int nbAliens = 0;
+
 
     public void Awake()
     {

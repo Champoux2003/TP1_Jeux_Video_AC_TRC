@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] private InputActionReference jumpAction;
 
     [Header("Invincibility")]
-    [SerializeField] private float invincibilityDuration = 0.5f;
+    [SerializeField] private float invincibilityDuration = 1f;
 
     private bool isInvincible = false;
     private CharacterController controller;
@@ -37,7 +37,6 @@ public class Player : MonoBehaviour
 
         controller.Move(move * Time.deltaTime);
     }
-
 
     private Vector3 PlayerSurfaceMovement()
     {

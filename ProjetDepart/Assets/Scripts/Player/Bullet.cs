@@ -7,9 +7,6 @@ public class Bullet : MonoBehaviour
     private ObjectPool bulletObjectPool;
 
     private float timeSinceSpawned = 0;
-
-    
-
     private void Awake()
     {
         bulletObjectPool = Finder.BulletObjectPool;
