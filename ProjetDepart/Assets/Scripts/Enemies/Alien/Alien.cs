@@ -26,7 +26,6 @@ public class Alien : MonoBehaviour
         if (collision.transform.GetComponent<Player>() is not null)
         {
             alienPool.Release(gameObject);
-            Finder.EventChannels.PublishAlienHitPlayer();
             return;
         }
         if (collision.transform.GetComponent<Bullet>() is not null)

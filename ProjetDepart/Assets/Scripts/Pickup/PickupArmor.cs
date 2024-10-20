@@ -2,15 +2,11 @@ using UnityEngine;
 
 public class PickupArmor : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void OnCollisionEnter(Collision collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.transform.GetComponent<Player>() is not null)
+        {
+            Finder.EventChannels.PublishMissilePowerUp();
+        }
     }
 }

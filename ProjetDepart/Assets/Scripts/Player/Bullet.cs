@@ -30,7 +30,6 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         bulletObjectPool.Release(gameObject);
-        Finder.EventChannels.PublishBulletHitAlien();
     }
 
 }

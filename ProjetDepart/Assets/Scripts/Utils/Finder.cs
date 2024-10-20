@@ -5,6 +5,9 @@ public class Finder : MonoBehaviour
     private static ObjectPool bulletObjectPool;
     private static ObjectPool missileObjectPool;
     private static ObjectPool alienObjectPool;
+    private static ObjectPool pickupHealthObjectPool;
+    private static ObjectPool pickupMissileObjectPool;
+    private static ObjectPool pickupBulletObjectPool;
     private static EventChannels eventChannels;
     private static StatManager statManager;
 
@@ -54,6 +57,42 @@ public class Finder : MonoBehaviour
                 missileObjectPool = GameObject.Find("MissileObjectPool").GetComponent<ObjectPool>();
             }
             return missileObjectPool;
+        }
+    }
+
+    public static ObjectPool PickupMissileObjectPool
+    {
+        get
+        {
+            if (pickupMissileObjectPool == null)
+            {
+                pickupMissileObjectPool = GameObject.Find("PickupArmorPool").GetComponent<ObjectPool>();
+            }
+            return pickupMissileObjectPool;
+        }
+    }
+
+    public static ObjectPool PickupHealthObjectPool
+    {
+        get
+        {
+            if (pickupHealthObjectPool == null)
+            {
+                pickupHealthObjectPool = GameObject.Find("PickupHealthPool").GetComponent<ObjectPool>();
+            }
+            return pickupHealthObjectPool;
+        }
+    }
+
+    public static ObjectPool PickupBulletObjectPool
+    {
+        get
+        {
+            if (pickupBulletObjectPool == null)
+            {
+                pickupBulletObjectPool = GameObject.Find("PickupBulletPool").GetComponent<ObjectPool>();
+            }
+            return pickupBulletObjectPool;
         }
     }
 

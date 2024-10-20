@@ -308,9 +308,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c9f402c20ad7d642a3738abb9cb2186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hurtSound: {fileID: 0}
-  deathSound: {fileID: 0}
+  playerHurtSound: {fileID: 0}
+  playerDeathSound: {fileID: 0}
   alienDeathSound: {fileID: 0}
+  bulletShotSound: {fileID: 0}
+  missileShotSound: {fileID: 0}
 --- !u!1 &616056485579276216
 GameObject:
   m_ObjectHideFlags: 0

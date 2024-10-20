@@ -82,18 +82,18 @@ public class Player : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.GetComponent<Alien>() is not null && !isInvincible)
+        if(collision.gameObject.GetComponent<Alien>() is not null )
         {
-            if(transform.position.y > collision.transform.position.y)
+            if(transform.position.y > collision.transform.position.y || isInvincible)
             {
                 Finder.EventChannels.PublishPlayerHitAlien();
             }
             else
             {
-                Finder.EventChannels.PublishAlienHitPlayer();
                 StartCoroutine(EnableInvicibility());
+                Finder.EventChannels.PublishAlienHitPlayer();
             }
-        }   
+        }
     }
 
     private IEnumerator EnableInvicibility()
