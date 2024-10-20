@@ -3,6 +3,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField]private float speed = 50f;
+    [SerializeField]private float maxLifeTime = 5f;
     private ObjectPool bulletObjectPool;
 
     private float timeSinceSpawned = 0;
@@ -22,7 +23,7 @@ public class Bullet : MonoBehaviour
     {
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
         timeSinceSpawned += Time.deltaTime;
-        if (timeSinceSpawned > 5)
+        if (timeSinceSpawned > maxLifeTime)
         {
             bulletObjectPool.Release(gameObject);
         }
